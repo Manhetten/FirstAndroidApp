@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="NMedia">NMedia!</string>
+    <string name="description_post_author_avatar">description_post_author_avatar</string>
+    <string name="description_post_menu">Post menu</string>
+    <string name="description_post_views">Views</string>
+    <string name="description_post_share">Share</string>
+    <string name="description_post_like">Like</string>
 </resources>
