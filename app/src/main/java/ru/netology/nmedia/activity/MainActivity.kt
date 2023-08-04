@@ -2,8 +2,10 @@ package ru.netology.nmedia.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.constraintlayout.widget.Group
 import ru.netology.nmedia.R
 import ru.netology.nmedia.adapter.OnInteractionListener
 import ru.netology.nmedia.adapter.PostsAdapter
@@ -39,12 +41,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
         )
-        binding.recyclerlist.adapter = adapter
+        binding.recyclerList.adapter = adapter
         viewModel.data.observe(this) { posts ->
             val newPost = posts.size > adapter.currentList.size
             adapter.submitList(posts) {
                 if (newPost) {
-                    binding.recyclerlist.smoothScrollToPosition(0)
+                    binding.recyclerList.smoothScrollToPosition(0)
                 }
             }
         }
@@ -52,6 +54,8 @@ class MainActivity : AppCompatActivity() {
             if (it.id != 0L) {
                 binding.content.setText(it.content)
                 binding.content.focusAndShowKeyboard()
+                binding.editContent.text = it.content
+                binding.group.visibility = View.VISIBLE
             }
         }
         binding.save.setOnClickListener {
@@ -62,6 +66,13 @@ class MainActivity : AppCompatActivity() {
             }
             viewModel.changeContentAndSave(text)
 
+            binding.group.visibility = View.GONE
+            binding.content.setText("")
+            binding.content.clearFocus()
+            AndroidUtils.hideKeyboard(it)
+        }
+        binding.cancel.setOnClickListener {
+            binding.group.visibility = View.GONE
             binding.content.setText("")
             binding.content.clearFocus()
             AndroidUtils.hideKeyboard(it)
