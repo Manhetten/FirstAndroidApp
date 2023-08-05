@@ -14,7 +14,7 @@
         android:layout_marginBottom="@dimen/common_padding"
         android:contentDescription="@string/description_post_author_avatar"
         android:src="@drawable/ic_netology_original_48dp"
-        app:layout_constraintBottom_toBottomOf="@id/barrierTop"
+        app:layout_constraintBottom_toBottomOf="@id/header"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@sample/posts_avatars" />
@@ -53,7 +53,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrierTop"
+        android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_padding"
         android:autoLink="web"
-        app:layout_constraintTop_toTopOf="@id/barrierTop"
+        app:layout_constraintTop_toTopOf="@id/header"
         tools:text="@sample/posts.json/data/content" />
 
     <androidx.constraintlayout.widget.Barrier
