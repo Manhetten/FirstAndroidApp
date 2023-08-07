@@ -46,6 +46,8 @@ class PostViewHolder(
             like.isChecked = post.likedByMe
             like.text = Counter().count(post.likeCounter)
 
+            share.text = Counter().count(post.shareCounter)
+
             like.setOnClickListener {
                 onInteractionListener.onLike(post)
             }
@@ -72,7 +74,6 @@ class PostViewHolder(
                     }
                 }.show()
             }
-            shareCounter.text = Counter().count(post.shareCounter)
         }
     }
 }
