@@ -42,13 +42,14 @@
         app:layout_constraintTop_toBottomOf="@id/author"
         tools:text="@sample/posts.json/data/published" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/menu"
+        style="@style/Widget.AppTheme.IconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
         android:contentDescription="@string/description_post_menu"
-        android:src="@drawable/ic_menu_vert_24"
+        app:icon="@drawable/ic_menu_vert_24"
+        app:iconTint="@color/icon_button_tint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,58 +70,32 @@
         tools:text="@sample/posts.json/data/content" />
 
     <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrierBot"
+        android:id="@+id/footer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
         app:constraint_referenced_ids="content" />
 
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/like"
+        style="@style/Widget.AppTheme.IconButtonWithCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/common_padding"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/description_post_like"
-        android:src="@drawable/ic_like_24"
-        app:layout_constraintTop_toBottomOf="@id/barrierBot"
-        tools:src="@drawable/ic_like_24" />
+        android:checkable="true"
+        app:icon="@drawable/ic_like_selector"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/footer" />
 
-    <TextView
-        android:id="@+id/likeCounter"
-        android:layout_width="@dimen/counter_area"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space"
-        android:layout_marginTop="@dimen/common_padding"
-        android:maxLength="6"
-        app:layout_constraintStart_toEndOf="@id/like"
-        app:layout_constraintTop_toBottomOf="@id/content"
-        tools:text="100000" />
-
-    <ImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/share"
+        style="@style/Widget.AppTheme.IconButtonWithCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space"
         android:layout_marginTop="@dimen/common_padding"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/description_post_share"
-        android:src="@drawable/ic_share_24"
-        app:layout_constraintStart_toEndOf="@id/likeCounter"
-        app:layout_constraintTop_toBottomOf="@id/barrierBot"
-        tools:src="@drawable/ic_share_24" />
-
-    <TextView
-        android:id="@+id/shareCounter"
-        android:layout_width="@dimen/counter_area"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/space"
-        android:layout_marginTop="@dimen/common_padding"
-        android:maxLength="6"
-        android:text="5"
-        app:layout_constraintStart_toEndOf="@id/share"
-        app:layout_constraintTop_toBottomOf="@id/barrierBot"
-        tools:text="10" />
+        app:icon="@drawable/ic_share_24"
+        app:layout_constraintStart_toEndOf="@id/like"
+        app:layout_constraintTop_toBottomOf="@id/footer" />
 
     <ImageButton
         android:id="@+id/views"
@@ -132,7 +107,7 @@
         android:contentDescription="@string/description_post_views"
         android:src="@drawable/ic_eye_24"
         app:layout_constraintEnd_toStartOf="@id/viewCount"
-        app:layout_constraintTop_toBottomOf="@id/barrierBot"
+        app:layout_constraintTop_toBottomOf="@id/footer"
         tools:src="@drawable/ic_eye_24" />
 
     <TextView
@@ -143,7 +118,7 @@
         android:maxLength="6"
         android:text="5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/barrierBot"
+        app:layout_constraintTop_toBottomOf="@id/footer"
         tools:text="999" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
