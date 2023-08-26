@@ -59,6 +59,9 @@ class PostViewHolder(
             if (post.video != null) {
                 video.visibility = ImageView.VISIBLE
                 playVideo.visibility = ImageButton.VISIBLE
+            } else {
+                video.visibility = ImageView.GONE
+                playVideo.visibility = ImageButton.GONE
             }
 
             like.setOnClickListener {
