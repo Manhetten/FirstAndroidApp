@@ -73,6 +73,28 @@
             app:layout_constraintTop_toTopOf="@id/header"
             tools:text="@sample/posts.json/data/content" />
 
+        <ImageView
+            android:id="@+id/video"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="@dimen/common_padding"
+            android:contentDescription="@string/video"
+            android:src="@drawable/hippo"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/like"
+            app:layout_constraintTop_toBottomOf="@id/footer" />
+
+        <ImageButton
+            android:id="@+id/play_video"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/video_play"
+            android:src="@drawable/ic_play_96"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@id/like"
+            app:layout_constraintTop_toBottomOf="@id/footer" />
+
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/footer"
             android:layout_width="wrap_content"
@@ -89,7 +111,7 @@
             android:checkable="true"
             app:icon="@drawable/ic_like_selector"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/footer" />
+            app:layout_constraintTop_toBottomOf="@id/video" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/share"
@@ -99,31 +121,17 @@
             android:layout_marginTop="@dimen/common_padding"
             app:icon="@drawable/ic_share_24"
             app:layout_constraintStart_toEndOf="@id/like"
-            app:layout_constraintTop_toBottomOf="@id/footer" />
+            app:layout_constraintTop_toBottomOf="@id/video" />
 
-        <ImageButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/views"
+            style="@style/Widget.AppTheme.IconButtonWithCounter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/common_padding"
-            android:layout_marginEnd="@dimen/space"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/description_post_views"
-            android:src="@drawable/ic_eye_24"
-            app:layout_constraintEnd_toStartOf="@id/viewCount"
-            app:layout_constraintTop_toBottomOf="@id/footer"
-            tools:src="@drawable/ic_eye_24" />
-
-        <TextView
-            android:id="@+id/viewCount"
-            android:layout_width="@dimen/counter_area"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/common_padding"
-            android:maxLength="6"
             android:text="5"
+            app:icon="@drawable/ic_eye_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/footer"
-            tools:text="999" />
-
+            app:layout_constraintTop_toBottomOf="@id/video" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -33,10 +33,24 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activity.VideoHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activity.NewPostActivity"
             android:exported="false" />
         <activity
             android:name=".activity.EditPostActivity"
             android:exported="false" />
     </application>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="*" />
+        </intent>
+    </queries>
 </manifest>
