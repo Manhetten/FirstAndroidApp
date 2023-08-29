@@ -3,6 +3,7 @@ package ru.netology.nmedia.repository
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.dto.Post
+import java.net.URL
 
 class PostRepositoryInMemoryImpl : PostRepository {
     private var nextId = 1L
@@ -51,7 +52,8 @@ class PostRepositoryInMemoryImpl : PostRepository {
             "1111Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше, целиться выше, бежать быстрее. Наша миссия — помочь встать на путь роста и начать цепочку перемен → http://netolo.gy/fyb",
             false,
             999,
-            999
+            999,
+            "https://www.youtube.com/watch?v=AQ85Gn4GM7U&ab_channel=ClassicalMusicTime"
         ),
     ).reversed()
 
@@ -63,7 +65,7 @@ class PostRepositoryInMemoryImpl : PostRepository {
         posts = posts.map {
             if (it.id != id) it else it.copy(
                 likedByMe = !it.likedByMe,
-                likeCounter = if(it.likedByMe) it.likeCounter - 1 else it.likeCounter + 1
+                likeCounter = if (it.likedByMe) it.likeCounter - 1 else it.likeCounter + 1
             )
         }
         data.value = posts
@@ -83,7 +85,14 @@ class PostRepositoryInMemoryImpl : PostRepository {
 
     override fun save(post: Post) {
         posts = if (post.id == 0L) {
-            listOf(post.copy(id = nextId++, author = "Me", published = "Now")) + posts
+            listOf(
+                post.copy(
+                    id = nextId++,
+                    author = "Me",
+                    published = "Now",
+                    likedByMe = false
+                )
+            ) + posts
         } else {
             posts.map { if (it.id != post.id) it else it.copy(content = post.content) }
         }

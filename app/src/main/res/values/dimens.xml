@@ -7,4 +7,5 @@
     <dimen name="counter_area">50dp</dimen>
     <dimen name="icon_button_padding">4dp</dimen>
     <dimen name="min_size">0dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>
