@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'ru.netology.nmedia'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "ru.netology.nmedia"
         minSdk 23
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -46,6 +46,7 @@ dependencies {
     def fragment_version = "1.6.1"
     def activity_version = "1.7.2"
     def gson_version = "2.10.1"
+    def nav_version = "2.7.1"
     def lifecycle_version = "2.6.1"
 
     implementation "androidx.core:core-ktx:$core_version"
@@ -56,6 +57,7 @@ dependencies {
     implementation "androidx.activity:activity-ktx:$activity_version"
     implementation "com.google.code.gson:gson:$gson_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
     testImplementation "junit:junit:$junit_version"
