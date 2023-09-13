@@ -29,12 +29,6 @@ class FeedFragment : Fragment() {
 
         val viewModel: PostViewModel by activityViewModels()
 
-//        val editPostLauncher = registerForActivityResult(EditPostResultContract()) { result ->
-//            result?.let {
-//                viewModel.changeContentAndSave(result)
-//            } ?: viewModel.cancelEdit()
-//        }
-
         val adapter = PostsAdapter(object : OnInteractionListener {
             override fun onLike(post: Post) {
                 viewModel.likeById(post.id)
@@ -67,8 +61,6 @@ class FeedFragment : Fragment() {
             override fun onEdit(post: Post) {
                 viewModel.edit(post)
                 findNavController().navigate(R.id.action_feedFragment_to_newPostFragment)
-
-                //editPostLauncher.launch(post.content)
             }
         }
         )
