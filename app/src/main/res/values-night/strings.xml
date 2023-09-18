@@ -18,4 +18,5 @@
     <string name="chooser_share_post">Share post</string>
     <string name="video">description_post_video</string>
     <string name="video_play">description_video_play</string>
+    <string name="open_post">open post</string>
 </resources>

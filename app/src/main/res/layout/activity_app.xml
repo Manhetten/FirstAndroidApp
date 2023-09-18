@@ -10,9 +10,9 @@
     app:navGraph="@navigation/nav_main"
     tools:context=".activity.AppActivity">
 
-<!--    <TextView-->
-<!--        android:id="@+id/contentText"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent" />-->
+    <!--    <TextView-->
+    <!--        android:id="@+id/contentText"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent" />-->
 
 </androidx.fragment.app.FragmentContainerView>

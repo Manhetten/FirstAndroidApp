@@ -16,7 +16,7 @@ class AppActivity : AppCompatActivity() {
         val binding = ActivityAppBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        intent?.let {intent ->
+        intent?.let { intent ->
             if (intent.action != Intent.ACTION_SEND) {
                 return@let
             }
@@ -36,7 +36,7 @@ class AppActivity : AppCompatActivity() {
             val navController = navHostFragment.navController
 
             navController.navigate(
-                R.id.action_feedFragment_to_newPostFragment,
+                R.id.action_feedFragment_to_postFragment,
                 Bundle().also { it.text = text }
             )
         }

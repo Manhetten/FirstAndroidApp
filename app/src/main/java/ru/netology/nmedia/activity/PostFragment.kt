@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import ru.netology.nmedia.databinding.FragmentPostBinding
 import ru.netology.nmedia.util.AndroidUtils.focusAndShowKeyboard
 import ru.netology.nmedia.util.AndroidUtils.hideKeyboard
@@ -36,6 +38,11 @@ class PostFragment : Fragment() {
         }
 
         binding.edit.focusAndShowKeyboard()
+//        if (binding.edit.isFocused) {
+//            binding.bottomAppBar.visibility = BottomAppBar.GONE
+//            //binding.ok.visibility = FloatingActionButton.GONE
+//        }
+
         binding.ok.setOnClickListener {
             hideKeyboard(it)
 

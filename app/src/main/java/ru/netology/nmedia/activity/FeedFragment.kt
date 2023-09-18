@@ -1,17 +1,15 @@
 package ru.netology.nmedia.activity
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.launch
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.netology.nmedia.R
+import ru.netology.nmedia.activity.OpenPostFragment.Companion.idArg
 import ru.netology.nmedia.adapter.OnInteractionListener
 import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.FragmentFeedBinding
@@ -60,7 +58,17 @@ class FeedFragment : Fragment() {
 
             override fun onEdit(post: Post) {
                 viewModel.edit(post)
-                findNavController().navigate(R.id.action_feedFragment_to_newPostFragment)
+                findNavController().navigate(R.id.action_feedFragment_to_postFragment)
+
+            }
+
+            override fun onButtonPost(post: Post) {
+                viewModel.edit(post)
+                findNavController().navigate(
+                    R.id.action_feedFragment_to_openPostFragment,
+                    Bundle().also { it.idArg = post.id }
+                )
+
             }
         }
         )
@@ -76,7 +84,7 @@ class FeedFragment : Fragment() {
 
 
         binding.fab.setOnClickListener {
-            findNavController().navigate(R.id.action_feedFragment_to_newPostFragment)
+            findNavController().navigate(R.id.action_feedFragment_to_postFragment)
         }
         return binding.root
     }
