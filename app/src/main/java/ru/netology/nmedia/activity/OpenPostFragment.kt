@@ -79,7 +79,6 @@ class OpenPostFragment : Fragment() {
                             when (item.itemId) {
                                 R.id.remove -> {
                                     viewModel.removeById(post.id)
-                                    viewModel.changeContentAndSave("")
                                     findNavController().navigateUp()
                                     true
                                 }
@@ -87,7 +86,6 @@ class OpenPostFragment : Fragment() {
                                 R.id.edit -> {
                                     viewModel.edit(post)
                                     findNavController().navigate(R.id.action_openPostFragment_to_newPostFragment)
-//                                    findNavController().navigateUp()
                                     true
                                 }
 

@@ -63,7 +63,6 @@ class FeedFragment : Fragment() {
             }
 
             override fun onButtonPost(post: Post) {
-                viewModel.edit(post)
                 findNavController().navigate(
                     R.id.action_feedFragment_to_openPostFragment,
                     Bundle().also { it.idArg = post.id }
