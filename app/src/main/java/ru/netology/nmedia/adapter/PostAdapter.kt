@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.PopupMenu
-import android.widget.VideoView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +19,8 @@ interface OnInteractionListener {
     fun onRemove(post: Post)
     fun onEdit(post: Post)
     fun onPlayVideo(post: Post)
+
+    fun onButtonPost(post: Post)
 }
 
 class PostsAdapter(
@@ -54,6 +55,9 @@ class PostViewHolder(
 
             playVideo.setOnClickListener {
                 onInteractionListener.onPlayVideo(post)
+            }
+            buttonPost.setOnClickListener {
+                onInteractionListener.onButtonPost(post)
             }
 
             if (post.video != null) {
