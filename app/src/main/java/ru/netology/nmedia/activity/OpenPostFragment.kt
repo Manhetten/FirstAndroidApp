@@ -27,7 +27,7 @@ class OpenPostFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentOpenPostBinding.inflate(layoutInflater)
 
         val viewModel: PostViewModel by activityViewModels()
@@ -85,7 +85,7 @@ class OpenPostFragment : Fragment() {
 
                                 R.id.edit -> {
                                     viewModel.edit(post)
-                                    findNavController().navigate(R.id.action_openPostFragment_to_newPostFragment)
+                                    findNavController().navigate(R.id.action_openPostFragment_to_editPostFragment)
                                     true
                                 }
 

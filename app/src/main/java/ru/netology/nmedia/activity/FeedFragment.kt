@@ -22,7 +22,7 @@ class FeedFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentFeedBinding.inflate(layoutInflater)
 
         val viewModel: PostViewModel by activityViewModels()
@@ -58,7 +58,7 @@ class FeedFragment : Fragment() {
 
             override fun onEdit(post: Post) {
                 viewModel.edit(post)
-                findNavController().navigate(R.id.action_feedFragment_to_postFragment)
+                findNavController().navigate(R.id.action_feedFragment_to_editPostFragment)
 
             }
 
@@ -83,7 +83,7 @@ class FeedFragment : Fragment() {
 
 
         binding.fab.setOnClickListener {
-            findNavController().navigate(R.id.action_feedFragment_to_postFragment)
+            findNavController().navigate(R.id.action_feedFragment_to_newPostFragment)
         }
         return binding.root
     }

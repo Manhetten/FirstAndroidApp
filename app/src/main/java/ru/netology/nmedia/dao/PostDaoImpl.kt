@@ -96,8 +96,8 @@ class PostDaoImpl(private val db: SQLiteDatabase) : PostDao {
             null,
             null,
         ).use {
-                it.moveToNext()
-                return map(it)
+            it.moveToNext()
+            return map(it)
         }
     }
 
