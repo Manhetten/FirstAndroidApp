@@ -14,7 +14,8 @@ class PostDaoImpl(private val db: SQLiteDatabase) : PostDao {
             ${PostColumns.COLUMN_CONTENT} TEXT NOT NULL,
             ${PostColumns.COLUMN_PUBLISHED} TEXT NOT NULL,
             ${PostColumns.COLUMN_LIKED_BY_ME} BOOLEAN NOT NULL DEFAULT 0,
-            ${PostColumns.COLUMN_LIKECOUNTER} INTEGER NOT NULL DEFAULT 0
+            ${PostColumns.COLUMN_LIKECOUNTER} INTEGER NOT NULL DEFAULT 0,
+            ${PostColumns.COLUMN_SHARECOUNTER} INTEGER NOT NULL DEFAULT 0
             );
         """.trimIndent()
     }
@@ -27,13 +28,16 @@ class PostDaoImpl(private val db: SQLiteDatabase) : PostDao {
         const val COLUMN_PUBLISHED = "published"
         const val COLUMN_LIKED_BY_ME = "likedByMe"
         const val COLUMN_LIKECOUNTER = "likeCounter"
+        const val COLUMN_SHARECOUNTER = "shareCounter"
         val ALL_COLUMNS = arrayOf(
             COLUMN_ID,
             COLUMN_AUTHOR,
             COLUMN_CONTENT,
             COLUMN_PUBLISHED,
             COLUMN_LIKED_BY_ME,
-            COLUMN_LIKECOUNTER
+            COLUMN_LIKECOUNTER,
+            COLUMN_SHARECOUNTER
+
         )
     }
 
@@ -67,7 +71,13 @@ class PostDaoImpl(private val db: SQLiteDatabase) : PostDao {
     }
 
     override fun shareCounter(id: Long) {
-        TODO("Not yet implemented")
+        db.execSQL("""
+            UPDATE posts SET
+                shareCounter = shareCounter + 1
+            WHERE id = ?;
+        """.trimIndent(), arrayOf(id)
+        )
+
     }
 
     override fun save(post: Post): Post {
@@ -118,6 +128,7 @@ class PostDaoImpl(private val db: SQLiteDatabase) : PostDao {
                 published = getString(getColumnIndexOrThrow(PostColumns.COLUMN_PUBLISHED)),
                 likedByMe = getInt(getColumnIndexOrThrow(PostColumns.COLUMN_LIKED_BY_ME)) != 0,
                 likeCounter = getInt(getColumnIndexOrThrow(PostColumns.COLUMN_LIKECOUNTER)),
+                shareCounter = getInt(getColumnIndexOrThrow(PostColumns.COLUMN_SHARECOUNTER)),
             )
         }
     }
