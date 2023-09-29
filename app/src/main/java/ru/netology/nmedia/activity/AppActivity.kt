@@ -7,7 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
 import com.google.android.material.snackbar.Snackbar
 import ru.netology.nmedia.R
-import ru.netology.nmedia.activity.PostFragment.Companion.text
+import ru.netology.nmedia.activity.NewPostFragment.Companion.text
 import ru.netology.nmedia.databinding.ActivityAppBinding
 
 class AppActivity : AppCompatActivity() {
@@ -36,7 +36,7 @@ class AppActivity : AppCompatActivity() {
             val navController = navHostFragment.navController
 
             navController.navigate(
-                R.id.action_feedFragment_to_postFragment,
+                R.id.action_feedFragment_to_editPostFragment,
                 Bundle().also { it.text = text }
             )
         }

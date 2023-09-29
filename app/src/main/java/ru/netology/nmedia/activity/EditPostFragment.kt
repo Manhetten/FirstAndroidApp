@@ -7,54 +7,37 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.bottomappbar.BottomAppBar
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import ru.netology.nmedia.databinding.FragmentPostBinding
+import ru.netology.nmedia.databinding.FragmentEditPostBinding
 import ru.netology.nmedia.util.AndroidUtils.focusAndShowKeyboard
 import ru.netology.nmedia.util.AndroidUtils.hideKeyboard
 import ru.netology.nmedia.util.StringArg
 import ru.netology.nmedia.viewmodel.PostViewModel
 
-class PostFragment : Fragment() {
+class EditPostFragment : Fragment() {
     companion object {
         var Bundle.text by StringArg
     }
+
+    private val viewModel: PostViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentPostBinding.inflate(layoutInflater)
+    ): View {
+        val binding = FragmentEditPostBinding.inflate(layoutInflater)
 
-        val viewModel: PostViewModel by activityViewModels()
-
-        val text = arguments?.text
-
-        if (text != null) {
-            binding.edit.setText(text)
-        } else {
-            binding.edit.setText(viewModel.edited.value?.content)
-        }
+        binding.edit.setText(viewModel.edited.value?.content)
 
         binding.edit.focusAndShowKeyboard()
-//        if (binding.edit.isFocused) {
-//            binding.bottomAppBar.visibility = BottomAppBar.GONE
-//            //binding.ok.visibility = FloatingActionButton.GONE
-//        }
-
         binding.ok.setOnClickListener {
             hideKeyboard(it)
-
             if (!binding.edit.text.isNullOrBlank()) {
                 val content = binding.edit.text.toString()
                 viewModel.changeContentAndSave(content)
             }
-
             findNavController().navigateUp()
         }
-
         return binding.root
     }
-
 }

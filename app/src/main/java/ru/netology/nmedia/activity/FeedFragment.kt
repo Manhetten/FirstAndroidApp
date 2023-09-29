@@ -22,17 +22,19 @@ class FeedFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val binding = FragmentFeedBinding.inflate(layoutInflater)
 
         val viewModel: PostViewModel by activityViewModels()
 
         val adapter = PostsAdapter(object : OnInteractionListener {
+
             override fun onLike(post: Post) {
                 viewModel.likeById(post.id)
             }
 
             override fun onShare(post: Post) {
+                viewModel.shareCounter(post.id)
                 val intent = Intent().apply {
                     action = Intent.ACTION_SEND
                     putExtra(Intent.EXTRA_TEXT, post.content)
@@ -58,7 +60,7 @@ class FeedFragment : Fragment() {
 
             override fun onEdit(post: Post) {
                 viewModel.edit(post)
-                findNavController().navigate(R.id.action_feedFragment_to_postFragment)
+                findNavController().navigate(R.id.action_feedFragment_to_editPostFragment)
 
             }
 
@@ -83,7 +85,7 @@ class FeedFragment : Fragment() {
 
 
         binding.fab.setOnClickListener {
-            findNavController().navigate(R.id.action_feedFragment_to_postFragment)
+            findNavController().navigate(R.id.action_feedFragment_to_newPostFragment)
         }
         return binding.root
     }
