@@ -11,7 +11,7 @@ class PostRepositoryRoomImpl(
     private val dao: PostDao
 ) : PostRepository {
 
-    override fun getAll(): LiveData<List<Post>> = dao.getAll().map { list ->
+    override fun getAll(): LiveData<List<Post>> = dao.getAll().map {list ->
         list.map { it.toDto() }
     }
 
