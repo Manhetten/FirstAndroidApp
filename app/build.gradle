@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.devtools.ksp'
 }
 
 android {
@@ -26,16 +27,16 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
     }
 }
 
 dependencies {
-    def core_version = "1.10.1"
+    def core_version = "1.12.0"
     def appcompat_version = "1.6.1"
     def mdc_version = "1.9.0"
     def constraintlayout_version = "2.1.4"
@@ -46,10 +47,13 @@ dependencies {
     def fragment_version = "1.6.1"
     def activity_version = "1.7.2"
     def gson_version = "2.10.1"
-    def nav_version = "2.7.1"
-    def lifecycle_version = "2.6.1"
+    def nav_version = "2.7.3"
+    def lifecycle_version = "2.6.2"
+    def room_version = "2.5.2"
 
     implementation "androidx.core:core-ktx:$core_version"
+    implementation "androidx.room:room-runtime:$room_version"
+    ksp "androidx.room:room-compiler:$room_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$mdc_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
